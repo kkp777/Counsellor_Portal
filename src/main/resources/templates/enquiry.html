@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counsellor Portal</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+	<div class="container">
+		<ul class="nav">
+			<li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a>
+			</li>
+			<li class="nav-item"><a class="nav-link active"
+				aria-current="page" href="/enquiry">Add Enquiry</a></li>
+			<li class="nav-item"><a class="nav-link" href="/viewEnqPage">View
+					Enquiries</a></li>
+			<li class="nav-item"><a class="nav-link" href="/logout">Logout</a>
+			</li>
+		</ul>
+		<hr />
+
+
+
+
+
+		<h1>Add New Enquiry</h1>
+
+		<font style="color: red;">
+			<p th:text="${emsg}"></p>
+		</font> <font style="color: green;">
+			<p th:text="${smsg}"></p>
+		</font>
+
+		<form th:action="@{/addEnq}" th:object="${enquiry}" method="post">
+			<table>
+				<tr>
+					<td>Student-Name:</td>
+					<td><input type="text" th:field="*{stuName}" required
+						class="form-control" /></td>
+					<td><input type="hidden" th:field="*{enqId}" required /></td>
+				</tr>
+
+				<tr>
+					<td>Phno:</td>
+					<td><input type="number" th:field="*{StudentPhno}" required
+						class="form-control" /></td>
+				</tr>
+
+				<tr>
+					<td>Course-Mode :</td>
+					<td><select th:field="*{classMode}" required>
+							<option value="">-Select-</option>
+							<option value="Online">Online</option>
+							<option value="Classroom">Classroom</option>
+					</select></td>
+				</tr>
+
+				<tr>
+					<td>Course-Name :</td>
+					<td><select th:field="*{courseName}" required>
+							<option value="">-Select-</option>
+							<option value="Java">Java</option>
+							<option value="Python">Python</option>
+							<option value="Aws">Aws</option>
+							<option value="Devops">Devops</option>
+							<option value="C++">C++</option>
+
+					</select></td>
+				</tr>
+
+
+				<tr>
+					<td>Status :</td>
+					<td><select th:field="*{enqStatus}" required>
+							<option value="">-Select-</option>
+							<option value="Open">Open</option>
+							<option value="Enrolled">Enrolled</option>
+							<option value="Lost">Lost</option>
+
+					</select></td>
+				</tr>
+
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Save"
+						/
+    								class="btn btn-primary"></td>
+				</tr>
+
+
+
+
+			</table>
+
+		</form>
+
+
+	</div>
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+		crossorigin="anonymous"></script>
+</body>
+</html>
